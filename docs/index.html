@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging (ASR)</title>
+  <meta name="description" content="ASR is a neurosymbolic autoencoder that reconstructs histology images from elliptical visual primitives; small decision trees on the primitives classify thyroid tissue more accurately than a conventional autoencoder.">
+  <meta name="author" content="Zuzanna Buchnajzer, Kacper Dobek, Stanisław Hapke, Daniel Jankowski, Krzysztof Krawiec">
+  <link rel="canonical" href="https://neurosymbolic-research-group.github.io/ASR/">
+  <meta name="theme-color" content="#d6336c">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="static/img/apple-touch-icon.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Neurosymbolic Research Group">
+  <meta property="og:url" content="https://neurosymbolic-research-group.github.io/ASR/">
+  <meta property="og:title" content="Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging">
+  <meta property="og:description" content="A neurosymbolic autoencoder that explains histology images with elliptical visual primitives.">
+  <meta property="og:image" content="https://neurosymbolic-research-group.github.io/ASR/static/img/social_card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ASR architecture: a convolutional encoder feeds three modelers that predict ellipse parameters; a renderer composes per-scale canvases and a background into the reconstruction.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging">
+  <meta name="twitter:description" content="A neurosymbolic autoencoder that explains histology images with elliptical visual primitives.">
+  <meta name="twitter:image" content="https://neurosymbolic-research-group.github.io/ASR/static/img/social_card.jpg">
+  <meta name="twitter:image:alt" content="ASR architecture: a convolutional encoder feeds three modelers that predict ellipse parameters; a renderer composes per-scale canvases and a background into the reconstruction.">
+
+  <!-- Google Scholar -->
+  <meta name="citation_title" content="Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging">
+  <meta name="citation_author" content="Buchnajzer, Zuzanna">
+  <meta name="citation_author_institution" content="Poznan University of Technology">
+  <meta name="citation_author" content="Dobek, Kacper">
+  <meta name="citation_author_institution" content="Poznan University of Technology">
+  <meta name="citation_author" content="Hapke, Stanisław">
+  <meta name="citation_author_institution" content="Poznan University of Technology">
+  <meta name="citation_author" content="Jankowski, Daniel">
+  <meta name="citation_author_institution" content="Poznan University of Technology">
+  <meta name="citation_author" content="Krawiec, Krzysztof">
+  <meta name="citation_author_institution" content="Poznan University of Technology">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_arxiv_id" content="2411.12070">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2411.12070">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://neurosymbolic-research-group.github.io/ASR/#paper",
+        "headline": "Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging",
+        "alternativeHeadline": "ASR",
+        "description": "ASR is a neurosymbolic autoencoder that reconstructs images from elliptical visual primitives at three scales. Decision trees on the primitive parameters classify thyroid histology more accurately than a conventional convolutional autoencoder.",
+        "url": "https://neurosymbolic-research-group.github.io/ASR/",
+        "sameAs": "https://arxiv.org/abs/2411.12070",
+        "identifier": "arXiv:2411.12070",
+        "datePublished": "2024",
+        "image": "https://neurosymbolic-research-group.github.io/ASR/static/img/social_card.jpg",
+        "keywords": ["neurosymbolic", "autoencoder", "visual primitives", "differentiable rendering", "structural representation", "histopathology", "interpretability", "decision trees"],
+        "author": [
+          {"@type": "Person", "name": "Zuzanna Buchnajzer", "affiliation": {"@id": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group#org"}},
+          {"@type": "Person", "name": "Kacper Dobek", "affiliation": {"@id": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group#org"}},
+          {"@type": "Person", "name": "Stanisław Hapke", "affiliation": {"@id": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group#org"}},
+          {"@type": "Person", "name": "Daniel Jankowski", "affiliation": {"@id": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group#org"}},
+          {"@type": "Person", "name": "Krzysztof Krawiec", "affiliation": {"@id": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group#org"}}
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "ASR",
+        "codeRepository": "https://github.com/neurosymbolic-research-group/ASR",
+        "programmingLanguage": "Python",
+        "citation": {"@id": "https://neurosymbolic-research-group.github.io/ASR/#paper"}
+      },
+      {
+        "@type": "ResearchOrganization",
+        "@id": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group#org",
+        "name": "Neurosymbolic Research Group",
+        "url": "https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group",
+        "logo": "https://neurosymbolic-research-group.github.io/ASR/static/img/nrg_logo.png",
+        "parentOrganization": {"@type": "CollegeOrUniversity", "name": "Poznan University of Technology"},
+        "sameAs": [
+          "https://github.com/neurosymbolic-research-group",
+          "https://www.linkedin.com/company/neurosymbolic-research-group"
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <p class="eyebrow">ASR</p>
+  <h1>Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging</h1>
+  <p class="authors">
+    <span>Zuzanna Buchnajzer</span>
+    <span>Kacper Dobek</span>
+    <span>Stanisław Hapke</span>
+    <span>Daniel Jankowski</span>
+    <span>Krzysztof Krawiec</span>
+  </p>
+  <p class="affiliation">
+    Institute of Computing Science, Poznan University of Technology
+  </p>
+  <nav class="links" aria-label="Paper resources">
+    <a class="button" href="https://arxiv.org/abs/2411.12070">arXiv</a>
+    <a class="button" href="https://arxiv.org/pdf/2411.12070">PDF</a>
+    <a class="button" href="https://github.com/neurosymbolic-research-group/ASR">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      Code
+    </a>
+    <a class="button" href="#citation">BibTeX</a>
+  </nav>
+</header>
+
+<figure class="teaser">
+  <div class="pair">
+    <figure>
+      <img data-src="static/img/input_patches.gif" width="256" height="256"
+           alt="Animation zooming out over thyroid tissue: a pink colloid-filled follicle with a pale lumen, surrounded by darker cell layers and neighbouring follicles.">
+      <figcaption>Input</figcaption>
+    </figure>
+    <figure>
+      <img data-src="static/img/asr_reconstructions.gif" width="256" height="256"
+           alt="The same view reconstructed frame by frame by ASR from overlapping translucent ellipses in pink, red and purple.">
+      <figcaption>ASR reconstruction</figcaption>
+    </figure>
+  </div>
+  <noscript>
+    <style>.pair img[data-src] { display: none; }</style>
+    <div class="pair">
+      <img src="static/img/input_patches.gif" width="256" height="256" alt="Animation zooming out over thyroid tissue.">
+      <img src="static/img/asr_reconstructions.gif" width="256" height="256" alt="ASR reconstruction of the same view, frame by frame.">
+    </div>
+  </noscript>
+  <figcaption>
+    A view zooming out over thyroid tissue (left) and its ASR reconstruction,
+    computed independently for every frame (right). Each frame is drawn from 84
+    ellipses at three scales. Every ellipse is
+    described by its width, height, rotation and colour, and these parameters
+    are the image's representation.
+  </figcaption>
+</figure>
+
+<section>
+  <h2>Abstract</h2>
+  <p>
+    Deep learning architectures based on convolutional neural networks tend to
+    rely on continuous, smooth features. While this characteristics provides
+    significant robustness and proves useful in many real-world tasks, it is
+    strikingly incompatible with the physical characteristic of the world, which,
+    at the scale in which humans operate, comprises crisp objects, typically
+    representing well-defined categories. This study proposes a class of
+    neurosymbolic systems that learn by reconstructing images in terms of visual
+    primitives and are thus forced to form high-level, structural explanations of
+    them. When applied to the task of diagnosing abnormalities in histological
+    imaging, the method proved superior to a conventional deep learning
+    architecture in terms of classification accuracy, while being more
+    transparent.
+  </p>
+</section>
+
+<section id="method">
+  <h2>Method</h2>
+  <p>
+    ASR (Auto-associative Structural Representations) is an autoencoder whose
+    decoder is a fixed, differentiable renderer instead of a learned network. A
+    convolutional <em>encoder</em> processes the image, and at three depths a
+    <em>modeler</em> reads the feature map and predicts one ellipse per cell of a
+    regular grid: 8&nbsp;×&nbsp;8, 4&nbsp;×&nbsp;4 and 2&nbsp;×&nbsp;2 ellipses with
+    spacings of 32, 64 and 128&nbsp;px. Each ellipse has a width <i>w</i>, a height
+    <i>h</i>, a rotation <i>d</i> and an RGB appearance <b><i>a</i></b>. A
+    <em>background block</em> predicts one background colour.
+  </p>
+  <p>
+    The renderer draws each scale on its own canvas and multiplies the canvases
+    with the background into the reconstruction. The model is trained only to
+    minimise the reconstruction error, so it has to explain every image with a
+    small set of interpretable shapes.
+  </p>
+
+  <figure class="wide">
+    <img src="static/img/architecture.png" width="1864" height="1000"
+       alt="ASR architecture: the input image passes through ConvBlocks; ConvBlocks 0, 1 and 2 feed Modelers 0, 1 and 2, which output w, h, d and a; a Background Block outputs RGB values; the renderer turns them into Canvases 0 to 2 and a background, multiplies them into the reconstruction, and an MSE loss compares it with the input.">
+    <figcaption>
+      ASR architecture. Modelers attached to three encoder blocks predict ellipse
+      parameters for one canvas each. The renderer multiplies the canvases and the
+      background into the reconstruction, which is compared with the input by a
+      (border-masked) MSE loss.
+    </figcaption>
+  </figure>
+
+  <h3>From reconstruction to diagnosis</h3>
+  <ol class="phases">
+    <li>
+      <span class="phase-num">1</span>
+      <div><strong>Reconstruction.</strong> The encoder is trained on unlabelled
+      patches, using reconstruction alone. Three variants are studied:
+      <em>Base</em>; <em>Regularized</em>, which adds a penalty that encourages
+      switching unneeded ellipses off; and <em>Incremental</em>, which brings in
+      the finer scales gradually during training.</div>
+    </li>
+    <li>
+      <span class="phase-num">2</span>
+      <div><strong>Classification.</strong> Patches of each slide are grouped into
+      bags of 16. The mean and standard deviation of every ellipse parameter at
+      every scale give 36 named features per bag. A decision tree classifies the
+      bag as Benign, Hashimoto or Nodularity.</div>
+    </li>
+  </ol>
+</section>
+
+<section id="reconstructions">
+  <h2>Reconstructions</h2>
+  <p>
+    Test patches (top rows) and their reconstructions (bottom rows). The model
+    captures the layout of colloid-filled follicles, the pink-red colloid and the
+    purple cellular tissue using ellipses only.
+  </p>
+  <figure class="wide">
+    <img src="static/img/reconstructions_base.png" width="1000" height="500" loading="lazy"
+         alt="Five thyroid patches above their ASR Base reconstructions built from many overlapping ellipses.">
+    <figcaption>ASR <em>Base</em>.</figcaption>
+  </figure>
+  <figure class="wide">
+    <img src="static/img/reconstructions_incremental.png" width="1000" height="500" loading="lazy"
+         alt="Five thyroid patches above their ASR Incremental reconstructions, with fewer, larger ellipses.">
+    <figcaption>ASR <em>Incremental</em>.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Highlights</h2>
+  <ul class="stats">
+    <li><span class="stat">77.7%</span><span class="label">best test accuracy of ASR on three-class thyroid diagnosis, against 53.8% for a conventional convolutional autoencoder</span></li>
+    <li><span class="stat">36 features</span><span class="label">per bag, each with a meaning (for example, the mean height of mid-scale ellipses), compared with 200 opaque latent dimensions for the baseline</span></li>
+    <li><span class="stat">7 leaves</span><span class="label">in the best decision tree, small enough to read every decision path</span></li>
+  </ul>
+  <p>
+    All three ASR variants outperform the baseline in every run. See the paper for
+    the full results and an analysis of which scales the trees rely on.
+  </p>
+</section>
+
+<section>
+  <h2>Code</h2>
+  <p>
+    The <a href="https://github.com/neurosymbolic-research-group/ASR">repository</a> contains
+    the encoder, renderer and training code for all three variants, the
+    autoencoder baseline, bag-feature extraction and the decision-tree pipeline.
+    One config file per model reproduces the paper's settings.
+  </p>
+  <pre class="code"><code>git clone https://github.com/neurosymbolic-research-group/ASR.git &amp;&amp; cd ASR
+uv sync
+uv run asr-train    --config configs/base.yaml --run base
+uv run asr-test     --config configs/base.yaml --run base
+uv run asr-features --config configs/base.yaml --run base
+uv run asr-classify --config configs/base.yaml --run base</code></pre>
+</section>
+
+<section id="citation">
+  <div class="cite-head">
+    <h2>Citation</h2>
+    <button type="button" class="button small" id="copy-bibtex">Copy</button>
+  </div>
+  <pre class="code"><code id="bibtex">@misc{buchnajzer2024asr,
+      title={Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging},
+      author={Zuzanna Buchnajzer and Kacper Dobek and Stanisław Hapke and Daniel Jankowski and Krzysztof Krawiec},
+      year={2024},
+      eprint={2411.12070},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2411.12070},
+}</code></pre>
+</section>
+
+<section id="group" class="group" aria-labelledby="group-title">
+  <a class="group-logo" href="https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group">
+    <img src="static/img/nrg_logo.png" width="321" height="343" loading="lazy"
+         alt="Neurosymbolic Research Group logo">
+  </a>
+  <div>
+    <h2 id="group-title">Neurosymbolic Research Group</h2>
+    <p>
+      ASR is developed by the Neurosymbolic Research Group at Poznan University
+      of Technology.
+    </p>
+    <nav class="links group-links" aria-label="Neurosymbolic Research Group">
+      <a class="button" href="https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Website
+      </a>
+      <a class="button" href="https://www.linkedin.com/company/neurosymbolic-research-group">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="button" href="https://github.com/neurosymbolic-research-group">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    ASR · <a href="https://arxiv.org/abs/2411.12070">arXiv:2411.12070</a> ·
+    <a href="https://ml.cs.put.poznan.pl/en/teams/neurosymbolic-research-group">Neurosymbolic Research Group</a>
+  </p>
+</footer>
+
+<script>
+  document.getElementById("copy-bibtex").addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    const text = document.getElementById("bibtex").textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      button.textContent = "Copied";
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(document.getElementById("bibtex"));
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      button.textContent = "Selected";
+    }
+    setTimeout(() => { button.textContent = "Copy"; }, 1600);
+  });
+
+  // Download both GIFs first, then start them in the same frame so each input
+  // patch and its reconstruction stay in step.
+  const gifs = [...document.querySelectorAll(".pair img[data-src]")];
+  Promise.all(gifs.map((img) => new Promise((resolve) => {
+    const pre = new Image();
+    pre.onload = pre.onerror = resolve;
+    pre.src = img.dataset.src;
+  }))).then(() => requestAnimationFrame(() => {
+    gifs.forEach((img) => { img.src = img.dataset.src; });
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+[project]
+name = "asr"
+version = "1.0.0"
+description = "Auto-associative Structural Representations (ASR): learning structural image representations by reconstruction from visual primitives."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Zuzanna Buchnajzer" },
+    { name = "Kacper Dobek" },
+    { name = "Stanisław Hapke" },
+    { name = "Daniel Jankowski" },
+    { name = "Krzysztof Krawiec" },
+]
+keywords = ["representation learning", "neurosymbolic", "autoencoder", "histopathology", "interpretability"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+dependencies = [
+    "matplotlib>=3.9",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pillow>=10.4",
+    "piqa>=1.3",
+    "pydantic>=2.9",
+    "pyyaml>=6.0",
+    "scikit-learn>=1.6",
+    "torch>=2.6",
+    "torchmetrics>=1.6",
+    "torchvision>=0.21",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+# Only needed to extract patches from raw Aperio (.svs) whole-slide images.
+patches = ["opencv-python-headless>=4.10", "slideio>=2.6"]
+
+[project.urls]
+Paper = "https://arxiv.org/abs/2411.12070"
+
+[project.scripts]
+asr-train = "asr.cli.train:main"
+asr-test = "asr.cli.test:main"
+asr-train-ae = "asr.cli.train_ae:main"
+asr-features = "asr.cli.features:main"
+asr-classify = "asr.cli.classify:main"
+asr-patches = "asr.cli.patches:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3", "ruff>=0.8", "ty>=0.0.1a1"]
+
+[build-system]
+requires = ["uv_build>=0.10,<0.11"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "D", "SIM", "RUF", "PTH"]
+ignore = [
+    "N812", # `import torch.nn.functional as F` is idiomatic
+    "N806", # math-style capital matrix names (S, R, M)
+    "D107", # __init__ args are documented in the class docstring (Google style)
+    "RUF001", "RUF002", "RUF003", # Greek letters in docstrings/comments are intentional
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+
+[tool.ty.environment]
+python-version = "3.12"
+
+[tool.ty.analysis]
+# Optional `patches` extra; imported lazily inside asr.data.patches.
+allowed-unresolved-imports = ["cv2", "slideio"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

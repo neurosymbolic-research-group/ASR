@@ -1,0 +1,43 @@
+# Convolutional autoencoder "Baseline" (paper Sec. 4): 200-d latent, 3,781,509 parameters.
+dataset:
+  root: dataset/images
+  img_size: [3, 256, 256]
+  resize_shape: [256, 256]
+training:
+  batch_size: 32
+  num_epochs: 50
+  lr: 5.0e-4
+  patience: 100
+  early_stopping_on: train  # train | valid
+  n_border_ignored: 16    # MMSE ignores a 16-px border
+  augment: false
+  save_model: true
+  steps_per_epoch: 32     # 32 batches x 32 images = 1024 images per epoch
+  valid_full_pass: false  # false: steps_per_epoch random batches; true: full pass
+  grad_clip_norm: 1.0
+  seed: 2001
+testing:
+  batch_size: 32
+  weights: best.pt
+  plot: true
+  metrics: [mae, mse, ssim]
+features:
+  bag_size: 16
+  aggregations: [mean]      # paper: mean of the 200 latent dimensions
+  encoder_train_mode: true  # BatchNorm uses bag statistics; false = running statistics
+  dtype: float16            # float16 | float32
+  seed: 2001
+classifier:
+  criterion: [gini, entropy]
+  max_depth: [3, 4, 5, 7, null]
+  min_samples_leaf: [5, 10, 20]
+  cv: 5
+  tune_ccp_alpha: true
+  seed: 0
+autoencoder:
+  latent_dim: 200
+  base_channels: 16
+  ssim_weight: 0.05       # loss = MSE + ssim_weight * (1 - SSIM)
+plotting:
+  canvas_plot_period: 2
+  output_plot_period: 2

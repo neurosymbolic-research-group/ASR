@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "ASR: Auto-associative Structural Representations"
+type: software
+license: MIT
+authors:
+  - given-names: Zuzanna
+    family-names: Buchnajzer
+  - given-names: Kacper
+    family-names: Dobek
+  - given-names: Stanisław
+    family-names: Hapke
+  - given-names: Daniel
+    family-names: Jankowski
+  - given-names: Krzysztof
+    family-names: Krawiec
+preferred-citation:
+  type: article
+  title: "Autoassociative Learning of Structural Representations for Modeling and Classification in Medical Imaging"
+  authors:
+    - given-names: Zuzanna
+      family-names: Buchnajzer
+    - given-names: Kacper
+      family-names: Dobek
+    - given-names: Stanisław
+      family-names: Hapke
+    - given-names: Daniel
+      family-names: Jankowski
+    - given-names: Krzysztof
+      family-names: Krawiec
+  year: 2024
+  doi: 10.48550/arXiv.2411.12070
+  url: "https://arxiv.org/abs/2411.12070"
+  identifiers:
+    - type: other
+      value: "arXiv:2411.12070"

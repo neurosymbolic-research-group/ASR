@@ -1,0 +1,1 @@
+"""Conventional convolutional autoencoder baseline."""
